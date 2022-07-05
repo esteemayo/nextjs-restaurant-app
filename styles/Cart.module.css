@@ -1,0 +1,73 @@
+.container {
+  padding: 5rem;
+  display: flex;
+}
+
+.left {
+  flex: 2;
+}
+
+.table {
+  width: 100%;
+  border-spacing: 2rem;
+}
+
+.tr td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.imgContainer {
+  width: 10rem;
+  height: 10rem;
+  position: relative;
+}
+
+.name {
+  font-weight: 500;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.total {
+  font-weight: 500;
+  font-size: 1.8rem;
+}
+
+.right {
+  flex: 1;
+}
+
+.wrapper {
+  width: 90%;
+  max-height: 30rem;
+  background-color: #333;
+  padding: 5rem;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: var(--color-white);
+}
+
+.title {
+  text-transform: uppercase;
+}
+
+.totalTextTitle {
+  margin-right: 1rem;
+}
+
+.button {
+  border: none;
+  outline: none;
+  display: inline-block;
+  height: 3rem;
+  font-weight: bold;
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  border-radius: 3px;
+  margin-top: 2rem;
+  cursor: pointer;
+}
