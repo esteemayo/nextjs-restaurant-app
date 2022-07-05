@@ -91,3 +91,58 @@
   margin-top: 2rem;
   cursor: not-allowed;
 }
+
+@media only screen and (max-width: 30em) {
+  .container {
+    flex-direction: column;
+  }
+
+  .trTitle {
+    display: none;
+  }
+
+  .tr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+  }
+
+  .id::before {
+    content: 'Order ID: ';
+    font-weight: 500;
+  }
+
+  .name::before {
+    content: 'Customer: ';
+    font-weight: 500;
+  }
+
+  .address::before {
+    content: 'Address: ';
+    font-weight: 500;
+  }
+
+  .total::before {
+    content: 'Total: ';
+    font-weight: 500;
+  }
+
+  .row:last-child {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .done,
+  .undone,
+  .inProgress {
+    margin-bottom: 2rem;
+  }
+
+  .wrapper {
+    width: 100%;
+  }
+}

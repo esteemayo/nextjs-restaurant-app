@@ -23,9 +23,9 @@
 }
 
 .price {
-  color: var(--color-primary);
-  font-size: 2.4rem;
   font-weight: 400;
+  font-size: 2.4rem;
+  color: var(--color-primary);
   border-bottom: 1px solid var(--color-primary);
 }
 
@@ -107,4 +107,47 @@
   font-weight: 500;
   border-radius: 3px;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 30em) {
+  .container {
+    height: auto;
+    text-align: center;
+    flex-direction: column;
+    margin-top: 2rem;
+  }
+
+  .imgContainer {
+    width: 70vw;
+    height: 70vh;
+  }
+
+  .title {
+    margin: 0.5rem;
+  }
+
+  .sizes {
+    width: 100%;
+    padding: 0 2rem;
+  }
+
+  .ingredients {
+    flex-direction: column;
+  }
+
+  .option {
+    margin: 1rem;
+    font-size: 1.8rem;
+  }
+
+  .checkbox {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .quantity,
+  .button {
+    height: 5rem;
+    padding: 1rem 2rem;
+  }
 }

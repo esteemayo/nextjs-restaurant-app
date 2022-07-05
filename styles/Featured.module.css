@@ -28,3 +28,9 @@
   height: 100%;
   position: relative;
 }
+
+@media only screen and (max-width: 30em) {
+  .container {
+    height: 50vh;
+  }
+}

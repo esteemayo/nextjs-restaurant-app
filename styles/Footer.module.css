@@ -39,3 +39,30 @@
   color: lightgray;
   margin-bottom: 1rem;
 }
+
+@media only screen and (max-width: 30em) {
+  .container {
+    height: auto;
+    text-align: center;
+  }
+
+  .item:first-child {
+    display: none;
+  }
+
+  .item {
+    flex-direction: column;
+  }
+
+  .motto {
+    width: 100%;
+  }
+
+  .title {
+    font-size: 3rem;
+  }
+
+  .text {
+    font-size: 2rem;
+  }
+}

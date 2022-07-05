@@ -26,3 +26,18 @@
   text-align: center;
   color: #777;
 }
+
+@media only screen and (max-width: 30em) {
+  .container {
+    width: 100%;
+  }
+
+  .title {
+    font-size: 3rem;
+  }
+
+  .price,
+  .desc {
+    font-size: 2.4rem;
+  }
+}

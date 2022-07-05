@@ -10,11 +10,7 @@
 .table {
   width: 100%;
   border-spacing: 2rem;
-}
-
-.tr td {
-  text-align: center;
-  vertical-align: middle;
+  text-align: left;
 }
 
 .imgContainer {
@@ -65,9 +61,71 @@
   display: inline-block;
   height: 3rem;
   font-weight: bold;
+  text-transform: uppercase;
   background-color: var(--color-white);
   color: var(--color-primary);
   border-radius: 3px;
   margin-top: 2rem;
   cursor: pointer;
+}
+
+@media only screen and (max-width: 30em) {
+  .container {
+    flex-direction: column;
+    padding: 2rem;
+  }
+
+  .table {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .trTitle {
+    display: none;
+  }
+
+  .tr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  .imgContainer {
+    width: 12rem;
+    height: 12rem;
+  }
+
+  .name,
+  .total {
+    font-size: 2.4rem;
+  }
+
+  .extras,
+  .price,
+  .quantity {
+    font-size: 2.2rem;
+  }
+
+  .price::before {
+    content: 'Price: ';
+    font-weight: 500;
+  }
+
+  .quantity::before {
+    content: 'Quantity: ';
+    font-weight: 500;
+  }
+
+  .total::before {
+    content: 'Total: ';
+    font-weight: 500;
+  }
+
+  .wrapper {
+    width: 100%;
+  }
 }
