@@ -1,10 +1,14 @@
 import Image from 'next/image';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import styles from '../../styles/Product.module.css';
 import { getProduct } from '../../services/productService';
+import { addProduct } from '../../features/cart/cartSlice';
 
 const Product = ({ product }) => {
+  const dispatch = useDispatch();
+
   const [size, setSize] = useState(0);
   const [extras, setExtras] = useState([]);
   const [quantity, setQuantity] = useState(1);
@@ -30,6 +34,10 @@ const Product = ({ product }) => {
       changePrice(-option.price);
       setExtras(extras.filter((extra) => extra._id !== option._id));
     }
+  };
+
+  const handleClick = () => {
+    dispatch(addProduct({ ...product, extras, price, quantity }));
   };
 
   return (
@@ -82,7 +90,9 @@ const Product = ({ product }) => {
             className={styles.quantity}
             onChange={(e) => setQuantity(e.target.value)}
           />
-          <button className={styles.button}>Add to Cart</button>
+          <button onClick={handleClick} className={styles.button}>
+            Add to Cart
+          </button>
         </div>
       </div>
     </div>
