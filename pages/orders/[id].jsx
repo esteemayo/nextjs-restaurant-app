@@ -1,8 +1,10 @@
 import Image from 'next/image';
-import styles from '../../styles/Order.module.css';
 
-const Order = () => {
-  const status = 0;
+import styles from '../../styles/Order.module.css';
+import { getOrder } from '../../services/orderService';
+
+const Order = ({ order }) => {
+  const status = order.status;
 
   const statusClass = (index) => {
     if (index - status < 1) return styles.done;
@@ -26,16 +28,18 @@ const Order = () => {
             <tbody>
               <tr className={styles.tr}>
                 <td>
-                  <span className={styles.id}>129837819237</span>
+                  <span className={styles.id}>{order._id.toUpperCase()}</span>
                 </td>
                 <td>
-                  <span className={styles.name}>John Doe</span>
+                  <span className={styles.name}>{order.customer}</span>
                 </td>
                 <td>
-                  <span className={styles.address}>Elton st. 212-33 LA</span>
+                  <span className={styles.address}>{order.address}</span>
                 </td>
                 <td>
-                  <span className={styles.total}>$79.80</span>
+                  <span className={styles.total}>
+                    ${parseFloat(order.total).toFixed(2)}
+                  </span>
                 </td>
               </tr>
             </tbody>
@@ -100,13 +104,15 @@ const Order = () => {
         <div className={styles.wrapper}>
           <h2 className={styles.title}>CART TOTAL</h2>
           <div className={styles.totalText}>
-            <b className={styles.totalTextTitle}>Subtotal:</b>$79.60
+            <b className={styles.totalTextTitle}>Subtotal:</b>$
+            {parseFloat(order.total).toFixed(2)}
           </div>
           <div className={styles.totalText}>
             <b className={styles.totalTextTitle}>Discount:</b>$0.00
           </div>
           <div className={styles.totalText}>
-            <b className={styles.totalTextTitle}>Total:</b>$79.60
+            <b className={styles.totalTextTitle}>Total:</b>$
+            {parseFloat(order.total).toFixed(2)}
           </div>
           <button disabled className={styles.button}>
             PAID
@@ -115,6 +121,15 @@ const Order = () => {
       </div>
     </div>
   );
+};
+
+export const getServerSideProps = async ({ params }) => {
+  const { data: order } = await getOrder(params.id);
+  return {
+    props: {
+      order,
+    },
+  };
 };
 
 export default Order;
