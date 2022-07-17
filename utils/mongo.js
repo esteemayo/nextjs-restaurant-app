@@ -2,9 +2,18 @@ import mongoose from 'mongoose';
 
 const DATABASE_LOCAL = process.env.DATABASE_LOCAL;
 
-if (!DATABASE_LOCAL) {
+const DATABASE_PROD = process.env.DATABASE.replace(
+  '<PASSWORD>',
+  process.env.DATABASE_PASSWORD
+);
+
+const devEnv = process.env.NODE_ENV !== 'production';
+
+const MONGO_URI = devEnv ? DATABASE_LOCAL : DATABASE_PROD;
+
+if (!MONGO_URI) {
   throw new Error(
-    'Please define the DATABASE_LOCAL environment variable inside .env.local'
+    'Please define the MONGO_URI environment variable inside .env.local'
   );
 }
 
@@ -29,7 +38,7 @@ async function dbConnect() {
       bufferCommands: false,
     };
 
-    cached.promise = mongoose.connect(DATABASE_LOCAL, opts).then((mongoose) => {
+    cached.promise = mongoose.connect(MONGO_URI, opts).then((mongoose) => {
       return mongoose;
     });
   }
