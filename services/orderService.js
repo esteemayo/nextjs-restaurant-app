@@ -12,3 +12,5 @@ export const createNewOrder = (order) => http.post(apiEndpoint, order);
 
 export const updateOrder = (orderId, order) =>
   http.patch(orderUrl(orderId), order);
+
+export const deleteOrder = (orderId) => http.delete(orderUrl(orderId));
