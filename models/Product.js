@@ -7,13 +7,19 @@ const productSchema = new mongoose.Schema(
       type: String,
       trim: true,
       required: [true, 'A prduct must have a title'],
-      maxlength: 60,
+      maxlength: [
+        60,
+        'A product tile must have less or equal than 60 characters',
+      ],
     },
     slug: String,
     desc: {
       type: String,
       required: [true, 'A product must have a description'],
-      maxlength: 200,
+      maxlength: [
+        200,
+        'A product desc must have less or equal than 200 characters',
+      ],
     },
     img: {
       type: String,
