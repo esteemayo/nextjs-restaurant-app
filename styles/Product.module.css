@@ -88,11 +88,13 @@
 .checkbox {
   width: 2rem;
   height: 2rem;
+  outline: none;
 }
 
 .quantity {
   width: 5rem;
   height: 3rem;
+  outline: none;
 }
 
 .button {
