@@ -33,7 +33,7 @@ const OrderDetail = ({ total, createOrder }) => {
             onChange={(e) => setCustomer(e.target.value)}
           />
         </div>
-        <div className={styles.item}>
+        {/* <div className={styles.item}>
           <label htmlFor='phone' className={styles.label}>
             Phone Number
           </label>
@@ -42,9 +42,8 @@ const OrderDetail = ({ total, createOrder }) => {
             id='phone'
             placeholder='+1 234 567 89'
             className={styles.input}
-            // onChange={(e) => setCustomer(e.target.value)}
           />
-        </div>
+        </div> */}
         <div className={styles.item}>
           <label htmlFor='address' className={styles.label}>
             Address
