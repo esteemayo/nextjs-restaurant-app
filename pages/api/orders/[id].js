@@ -58,7 +58,9 @@ const handler = async (req, res) => {
           .json(`No order found with the given ID → ${orderId}`);
       }
 
-      res.status(204).json('Order deleted successfully');
+      res.status(204).json({
+        order: null,
+      });
     } catch (err) {
       res.status(500).json({ message: err });
     }
