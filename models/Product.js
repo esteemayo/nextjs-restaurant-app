@@ -1,3 +1,4 @@
+import slugify from 'slugify';
 import mongoose from 'mongoose';
 
 const productSchema = new mongoose.Schema(
@@ -35,6 +36,18 @@ const productSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
+productSchema.pre('save', async function (next) {
+  if (!this.isModified('title')) return next();
+  this.slug = slugify(this.title, { lower: true });
+
+  const slugRegEx = new RegExp(`^(${this.slug})((-[0-9]*$)?)$`, 'i');
+  const productWithSlug = await this.constructor.find({ slug: slugRegEx });
+
+  if (productWithSlug.length) {
+    this.slug = `${this.slug}-${productWithSlug.length + 1}`;
+  }
+});
 
 const Product =
   mongoose.models.Product || mongoose.model('Product', productSchema);
