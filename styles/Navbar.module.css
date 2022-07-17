@@ -55,6 +55,10 @@
   color: var(--color-white);
 }
 
+.list > * {
+  cursor: pointer;
+}
+
 .listItem {
   margin: 2rem;
   font-weight: 500;
@@ -62,6 +66,7 @@
 
 .cart {
   position: relative;
+  cursor: pointer;
 }
 
 .counter {
