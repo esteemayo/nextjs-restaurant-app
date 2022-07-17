@@ -1,0 +1,142 @@
+.mainAddButton {
+  border: none;
+  outline: none;
+  padding: 1rem;
+  margin: 2rem;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  width: 15rem;
+  border-radius: 1rem;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(245, 240, 240, 0.52);
+  position: fixed;
+  top: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper {
+  width: 50rem;
+  background-color: var(--color-white);
+  padding: 1rem 5rem;
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.close {
+  width: 3rem;
+  height: 3rem;
+  background-color: #000;
+  color: var(--color-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.label {
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.input,
+.textarea {
+  outline: none;
+  display: inline-block;
+  font-family: inherit;
+  color: #999;
+  caret-color: var(--color-primary);
+}
+
+.input {
+  border: none;
+  border-bottom: 1px solid gray;
+}
+
+.textarea {
+  resize: none;
+  border: 1px solid gray;
+}
+
+.priceContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.inputSm {
+  width: 25%;
+}
+
+.extra {
+  display: flex;
+  justify-content: space-between;
+}
+
+.extraButton {
+  border: none;
+  outline: none;
+  display: inline-block;
+  text-transform: capitalize;
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  padding: 0.5rem;
+  border: 1px dotted var(--color-primary);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.extraItems {
+  margin: 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.extraItem {
+  padding: 0.5rem;
+  font-size: 1.4rem;
+  border: 1px solid tomato;
+  background-color: var(--color-white);
+  color: tomato;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.addButton {
+  border: none;
+  outline: none;
+  display: inline-block;
+  text-transform: capitalize;
+  width: 25%;
+  background-color: var(--color-teal);
+  color: var(--color-white);
+  font-weight: 500;
+  padding: 0.5rem 0;
+  border-radius: 3px;
+  align-self: flex-end;
+  cursor: pointer;
+}
