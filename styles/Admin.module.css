@@ -1,0 +1,50 @@
+.container {
+  padding: 5rem;
+  display: flex;
+}
+
+.item {
+  flex: 1;
+}
+
+.table {
+  width: 100%;
+  border-spacing: 2rem;
+  text-align: left;
+}
+
+.button {
+  border: none;
+  outline: none;
+  display: inline-block;
+  padding: 0.5rem;
+  color: var(--color-white);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.button:first-child {
+  background-color: var(--color-teal);
+  margin-right: 1rem;
+}
+
+.button:last-child {
+  background-color: crimson;
+}
+
+.btnOrder {
+  border: none;
+  outline: none;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #f5a1a7;
+  color: var(--color-white);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.btnOrder:disabled {
+  cursor: not-allowed;
+  background-color: #f0e6ea;
+  color: #777;
+}
