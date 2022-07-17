@@ -69,6 +69,25 @@
   cursor: pointer;
 }
 
+.paymentMethods {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.payButton {
+  border: none;
+  outline: none;
+  display: inline-block;
+  padding: 1rem 0.5rem;
+  font-weight: bold;
+  background-color: var(--color-white);
+  color: var(--color-teal);
+  border-radius: 3px;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 30em) {
   .container {
     flex-direction: column;
