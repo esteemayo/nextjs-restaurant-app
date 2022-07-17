@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import logger from './logService';
 
 const devEnv = process.env.NODE_ENV !== 'production';
+
 const NEXT_PUBLIC_DEV_API_URL = process.env.NEXT_PUBLIC_DEV_API_URL;
 const NEXT_PUBLIC_PROD_API_URL = process.env.NEXT_PUBLIC_PROD_API_URL;
 
