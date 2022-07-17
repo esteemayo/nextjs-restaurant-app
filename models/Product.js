@@ -39,6 +39,7 @@ const productSchema = new mongoose.Schema(
 
 productSchema.pre('save', async function (next) {
   if (!this.isModified('title')) return next();
+
   this.slug = slugify(this.title, { lower: true });
 
   const slugRegEx = new RegExp(`^(${this.slug})((-[0-9]*$)?)$`, 'i');
