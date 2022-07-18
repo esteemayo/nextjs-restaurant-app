@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import { useRouter } from 'next/router';
+import { useEffect, useRef, useState } from 'react';
 
 import styles from '../../styles/Login.module.css';
 import { loginUser } from '../../services/authService';
@@ -7,6 +7,7 @@ import { loginUser } from '../../services/authService';
 const Login = () => {
   const router = useRouter();
 
+  const usernameRef = useRef();
   const [error, setError] = useState(false);
   const [username, setUsername] = useState(null);
   const [password, setPassword] = useState(null);
@@ -27,15 +28,19 @@ const Login = () => {
     }
   };
 
+  useEffect(() => {
+    usernameRef.current.focus();
+  }, []);
+
   return (
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <h1>Admin Dashboard</h1>
         <input
-          autoFocus
           type='text'
           placeholder='Username'
           className={styles.input}
+          ref={usernameRef}
           onChange={(e) => setUsername(e.target.value)}
         />
         <input
