@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 import { getProduct } from '../services/productService';
@@ -5,6 +6,7 @@ import styles from '../styles/Add.module.css';
 
 const Edit = ({ setClose, selected }) => {
   const [desc, setDesc] = useState(null);
+  const [file, setFile] = useState(null);
   const [title, setTitle] = useState(null);
   const [extra, setExtra] = useState(null);
   const [prices, setPrices] = useState([]);
@@ -44,7 +46,6 @@ const Edit = ({ setClose, selected }) => {
     (async () => {
       try {
         const { data } = await getProduct(selected);
-        console.log(data);
         setProduct(data);
         setTitle(data.title);
         setDesc(data.desc);
@@ -63,11 +64,32 @@ const Edit = ({ setClose, selected }) => {
           X
         </span>
         <h1>Update {product.title}</h1>
-        <div className={styles.item}>
-          <label htmlFor='file' className={styles.label}>
-            Choose an image
-          </label>
-          <input type='file' id='file' className={styles.input} />
+        <div className={`${styles.item}`}>
+          <div className={styles.imageContainer}>
+            <div className={styles.imageWrapper}>
+              {product.img && (
+                <Image
+                  src={file ? URL.createObjectURL(file) : product.img}
+                  width={50}
+                  height={50}
+                  objectFit='cover'
+                  alt={product.title}
+                />
+              )}
+            </div>
+            <div className={styles.fileInput}>
+              <label htmlFor='file' className={styles.label}>
+                Choose an image
+              </label>
+              <input
+                type='file'
+                id='file'
+                style={{ display: 'none' }}
+                className={`${styles.input} ${styles.formInput}`}
+                onChange={(e) => setFile(e.target.files[0])}
+              />
+            </div>
+          </div>
         </div>
         <div className={styles.item}>
           <label htmlFor='title' className={styles.label}>
@@ -94,9 +116,12 @@ const Edit = ({ setClose, selected }) => {
           ></textarea>
         </div>
         <div className={styles.item}>
-          <label className={styles.label}>Prices</label>
+          <label htmlFor='prices' className={styles.label}>
+            Prices
+          </label>
           <div className={styles.priceContainer}>
             <input
+              id='prices'
               type='number'
               placeholder={prices[0]}
               onChange={(e) => handleChangePrice(e, 0)}
@@ -122,6 +147,7 @@ const Edit = ({ setClose, selected }) => {
           </label>
           <div className={styles.extra}>
             <input
+              id='extra'
               type='text'
               name='text'
               placeholder='Item'
