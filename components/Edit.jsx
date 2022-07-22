@@ -1,10 +1,13 @@
+import axios from 'axios';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-import { getProduct } from '../services/productService';
+import { getProduct, updateProduct } from '../services/productService';
+
 import styles from '../styles/Add.module.css';
 
 const Edit = ({ setClose, selected }) => {
+  const [id, setId] = useState(null);
   const [desc, setDesc] = useState(null);
   const [file, setFile] = useState(null);
   const [title, setTitle] = useState(null);
@@ -39,7 +42,30 @@ const Edit = ({ setClose, selected }) => {
   };
 
   const handleUpdate = async () => {
-    console.log({ title, desc, prices, extraOptions });
+    const data = new FormData();
+    data.append('file', file);
+    data.append('upload_preset', 'uploads');
+
+    try {
+      const res = await axios.post(
+        'https://api.cloudinary.com/v1_1/dsbyq4j1/image/upload',
+        data
+      );
+      const { url } = res.data;
+
+      const updatedProduct = {
+        title,
+        desc,
+        prices,
+        extraOptions,
+        img: url,
+      };
+
+      await updateProduct(id, { ...updatedProduct });
+      setClose(true);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {
@@ -47,6 +73,7 @@ const Edit = ({ setClose, selected }) => {
       try {
         const { data } = await getProduct(selected);
         setProduct(data);
+        setId(data._id);
         setTitle(data.title);
         setDesc(data.desc);
         setPrices(data.prices);
