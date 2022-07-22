@@ -34,6 +34,22 @@ export default async function handler(req, res) {
     }
 
     try {
+      const product = await Product.findByIdAndUpdate(
+        productId,
+        { $set: { ...req.body } },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+
+      if (!product) {
+        return res
+          .status(404)
+          .json(`No product found with the given ID → ${productId}`);
+      }
+
+      res.status(200).json(product);
     } catch (err) {
       res.status(500).json({ message: err });
     }
