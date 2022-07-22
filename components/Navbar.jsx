@@ -1,14 +1,20 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import styles from '../styles/Navbar.module.css';
 
 const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
   const { quantity } = useSelector((state) => ({ ...state.cart }));
 
+  window.onscroll = () => {
+    setIsScrolled(window.pageYOffset === 0 ? false : true);
+  };
+
   return (
-    <div className={styles.container}>
+    <div className={isScrolled ? styles.scrolled : styles.container}>
       <div className={styles.item}>
         <div className={styles.callButton}>
           <Image src='/img/telephone.png' alt='' width='32' height='32' />

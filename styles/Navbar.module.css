@@ -10,6 +10,18 @@
   z-index: 1000;
 }
 
+.scrolled {
+  height: 10rem;
+  padding: 0 5rem;
+  background-image: linear-gradient(to right bottom, #ee7658, #f7572f, #c22c06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
 .item {
   flex: 1;
   display: flex;
