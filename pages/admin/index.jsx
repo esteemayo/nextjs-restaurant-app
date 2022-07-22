@@ -6,19 +6,24 @@ import { getOrders, updateOrder } from '../../services/orderService';
 import { deleteProduct, getProducts } from '../../services/productService';
 
 import styles from '../../styles/Admin.module.css';
+import Edit from '../../components/Edit';
 
 const Admin = ({ orders, products }) => {
+  const [close, setClose] = useState(true);
+  const [selected, setSelected] = useState(null);
   const [orderList, setOrderList] = useState(orders);
   const [productList, setProductList] = useState(products);
 
   const status = ['preparing', 'on the way', 'delivered'];
 
   const handleDelete = async (id) => {
-    try {
-      await deleteProduct(id);
-      setProductList(products.filter((item) => item._id !== id));
-    } catch (err) {
-      console.log(err);
+    if (window.confirm('Are you sure?')) {
+      try {
+        await deleteProduct(id);
+        setProductList(products.filter((item) => item._id !== id));
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 
@@ -70,7 +75,15 @@ const Admin = ({ orders, products }) => {
                   <td>{title}</td>
                   <td>${prices[0]}</td>
                   <td>
-                    <button className={styles.button}>Edit</button>
+                    <button
+                      className={styles.button}
+                      onClick={() => {
+                        setClose(false);
+                        setSelected(id);
+                      }}
+                    >
+                      Edit
+                    </button>
                     <button
                       className={styles.button}
                       onClick={() => handleDelete(id)}
@@ -123,6 +136,7 @@ const Admin = ({ orders, products }) => {
           </tbody>
         </table>
       </div>
+      {!close && <Edit setClose={setClose} selected={selected} />}
     </div>
   );
 };
