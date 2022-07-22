@@ -135,6 +135,59 @@
   cursor: pointer;
 }
 
+.extraItemUpdate {
+  padding: 0.5rem 1.5rem;
+  font-size: 1.4rem;
+  border: 1px solid tomato;
+  background-color: var(--color-white);
+  color: tomato;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.deleteItem {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding-bottom: 3px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageContainer {
+  display: flex;
+  align-items: center;
+}
+
+.imageWrapper {
+  flex: 1;
+}
+
+.fileInput {
+  flex: 6;
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.formInput {
+  border: none;
+}
+
+.imageWrapper > * {
+  border-radius: 50%;
+}
+
 .addButton {
   border: none;
   outline: none;
