@@ -48,7 +48,7 @@ const Edit = ({ setClose, selected }) => {
 
     try {
       const res = await axios.post(
-        'https://api.cloudinary.com/v1_1/dsbyq4j1/image/upload',
+        'https://api.cloudinary.com/v1_1/learnhowtocode/image/upload',
         data
       );
       const { url } = res.data;

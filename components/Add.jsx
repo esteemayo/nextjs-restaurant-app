@@ -15,12 +15,14 @@ const Add = ({ setClose }) => {
 
   const handleChangePrice = (e, index) => {
     const currentPrices = prices;
-    currentPrices[index] = e.target.value;
+    currentPrices[index] = Number(e.target.value);
     setPrices(currentPrices);
   };
 
   const handleExtraInput = ({ target: input }) => {
-    const { name, value } = input;
+    const { name, type, value } = input;
+    if (type === 'number') value = Number(value);
+
     setExtra({ ...extra, [name]: value });
   };
 
@@ -35,7 +37,7 @@ const Add = ({ setClose }) => {
 
     try {
       const uploadRes = await axios.post(
-        'https://api.cloudinary.com/v1_1/dsbyq4j1/image/upload',
+        'https://api.cloudinary.com/v1_1/learnhowtocode/image/upload',
         data
       );
 
