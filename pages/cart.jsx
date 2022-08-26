@@ -8,6 +8,7 @@ import {
   usePayPalScriptReducer,
 } from '@paypal/react-paypal-js';
 
+import Meta from '@/components/Meta';
 import styles from '@/styles/Cart.module.css';
 import { reset } from '@/features/cart/cartSlice';
 import OrderDetail from '@/components/OrderDetail';
@@ -106,103 +107,111 @@ const Cart = () => {
   }
 
   return (
-    <div className={styles.container}>
-      <div className={styles.left}>
-        <table className={styles.table}>
-          <thead>
-            <tr className={styles.trTitle}>
-              <th>Product</th>
-              <th>Name</th>
-              <th>Extras</th>
-              <th>Price</th>
-              <th>Quantity</th>
-              <th>Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            {products.map((item, index) => {
-              const { img, title, price, extras, quantity } = item;
-              return (
-                <tr key={index} className={styles.tr}>
-                  <td>
-                    <div className={styles.imgContainer}>
-                      <Image src={img} layout='fill' objectFit='cover' alt='' />
-                    </div>
-                  </td>
-                  <td>
-                    <span className={styles.name}>{title}</span>
-                  </td>
-                  <td>
-                    {extras?.length > 0 ? (
-                      <span className={styles.extras}>
-                        {extras.map((extra) => {
-                          return <span key={extra._id}>{extra.text}, </span>;
-                        })}
+    <>
+      <Meta title='Cart' />
+      <div className={styles.container}>
+        <div className={styles.left}>
+          <table className={styles.table}>
+            <thead>
+              <tr className={styles.trTitle}>
+                <th>Product</th>
+                <th>Name</th>
+                <th>Extras</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {products.map((item, index) => {
+                const { img, title, price, extras, quantity } = item;
+                return (
+                  <tr key={index} className={styles.tr}>
+                    <td>
+                      <div className={styles.imgContainer}>
+                        <Image
+                          src={img}
+                          layout='fill'
+                          objectFit='cover'
+                          alt=''
+                        />
+                      </div>
+                    </td>
+                    <td>
+                      <span className={styles.name}>{title}</span>
+                    </td>
+                    <td>
+                      {extras?.length > 0 ? (
+                        <span className={styles.extras}>
+                          {extras.map((extra) => {
+                            return <span key={extra._id}>{extra.text}, </span>;
+                          })}
+                        </span>
+                      ) : (
+                        '_______'
+                      )}
+                    </td>
+                    <td>
+                      <span className={styles.price}>${price}</span>
+                    </td>
+                    <td>
+                      <span className={styles.quantity}>{quantity}</span>
+                    </td>
+                    <td>
+                      <span className={styles.total}>
+                        ${parseFloat(price * quantity).toFixed(2)}
                       </span>
-                    ) : (
-                      '_______'
-                    )}
-                  </td>
-                  <td>
-                    <span className={styles.price}>${price}</span>
-                  </td>
-                  <td>
-                    <span className={styles.quantity}>{quantity}</span>
-                  </td>
-                  <td>
-                    <span className={styles.total}>
-                      ${parseFloat(price * quantity).toFixed(2)}
-                    </span>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-      <div className={styles.right}>
-        <div className={styles.wrapper}>
-          <h2 className={styles.title}>CART TOTAL</h2>
-          <div className={styles.totalText}>
-            <b className={styles.totalTextTitle}>Subtotal:</b>$
-            {parseFloat(total).toFixed(2)}
-          </div>
-          <div className={styles.totalText}>
-            <b className={styles.totalTextTitle}>Discount:</b>$0.00
-          </div>
-          <div className={styles.totalText}>
-            <b className={styles.totalTextTitle}>Total:</b>$
-            {parseFloat(total).toFixed(2)}
-          </div>
-          {open ? (
-            <div className={styles.paymentMethods}>
-              <button
-                className={styles.payButton}
-                onClick={() => setCash(true)}
-              >
-                CASH ON DELIVERY
-              </button>
-              <PayPalScriptProvider
-                options={{
-                  'client-id':
-                    'AXJ2ypD8R2JOJPTAEUyTTBlJxe_UQqxvj_TcImf3uCKHuNGXr7RU0gkOYl_EtiAyklMWcNEAqrt4migY',
-                  components: 'buttons',
-                  currency: 'USD',
-                  'disable-funding': 'credit,card,p24',
-                }}
-              >
-                <ButtonWrapper currency={currency} showSpinner={false} />
-              </PayPalScriptProvider>
-            </div>
-          ) : (
-            <button onClick={() => setOpen(true)} className={styles.button}>
-              CHECKOUT NOW!
-            </button>
-          )}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
+        <div className={styles.right}>
+          <div className={styles.wrapper}>
+            <h2 className={styles.title}>CART TOTAL</h2>
+            <div className={styles.totalText}>
+              <b className={styles.totalTextTitle}>Subtotal:</b>$
+              {parseFloat(total).toFixed(2)}
+            </div>
+            <div className={styles.totalText}>
+              <b className={styles.totalTextTitle}>Discount:</b>$0.00
+            </div>
+            <div className={styles.totalText}>
+              <b className={styles.totalTextTitle}>Total:</b>$
+              {parseFloat(total).toFixed(2)}
+            </div>
+            {open ? (
+              <div className={styles.paymentMethods}>
+                <button
+                  className={styles.payButton}
+                  onClick={() => setCash(true)}
+                >
+                  CASH ON DELIVERY
+                </button>
+                <PayPalScriptProvider
+                  options={{
+                    'client-id':
+                      'AXJ2ypD8R2JOJPTAEUyTTBlJxe_UQqxvj_TcImf3uCKHuNGXr7RU0gkOYl_EtiAyklMWcNEAqrt4migY',
+                    components: 'buttons',
+                    currency: 'USD',
+                    'disable-funding': 'credit,card,p24',
+                  }}
+                >
+                  <ButtonWrapper currency={currency} showSpinner={false} />
+                </PayPalScriptProvider>
+              </div>
+            ) : (
+              <button onClick={() => setOpen(true)} className={styles.button}>
+                CHECKOUT NOW!
+              </button>
+            )}
+          </div>
+        </div>
+        {cash && <OrderDetail total={total} createOrder={createOrder} />}
       </div>
-      {cash && <OrderDetail total={total} createOrder={createOrder} />}
-    </div>
+    </>
   );
 };
 

@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import excerpts from '@/utils/index';
 import Edit from '@/components/Edit';
+import Meta from '@/components/Meta';
 import styles from '@/styles/Admin.module.css';
 import { getOrders, updateOrder } from '@/services/orderService';
 import { deleteProduct, getProducts } from '@/services/productService';
@@ -43,100 +44,107 @@ const Admin = ({ orders, products }) => {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.item}>
-        <h1 className={styles.title}>Products</h1>
-        <table className={styles.table}>
-          <thead>
-            <tr className={styles.trTitle}>
-              <th>Image</th>
-              <th>Id</th>
-              <th>Title</th>
-              <th>Price</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {productList.map((item) => {
-              const { _id: id, img, prices, title } = item;
-              return (
-                <tr className={styles.trTitle} key={id}>
-                  <td>
-                    <Image
-                      src={img}
-                      width={50}
-                      height={50}
-                      objectFit='cover'
-                      alt=''
-                    />
-                  </td>
-                  <td>{excerpts(id, 5)}</td>
-                  <td>{title}</td>
-                  <td>${prices[0]}</td>
-                  <td>
-                    <button
-                      className={styles.button}
-                      onClick={() => {
-                        setClose(false);
-                        setSelected(id);
-                      }}
-                    >
-                      Edit
-                    </button>
-                    <button
-                      className={styles.button}
-                      onClick={() => handleDelete(id)}
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+    <>
+      <Meta title='Admin Dashboard' />
+      <div className={styles.container}>
+        <div className={styles.item}>
+          <h1 className={styles.title}>Products</h1>
+          <table className={styles.table}>
+            <thead>
+              <tr className={styles.trTitle}>
+                <th>Image</th>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {productList.map((item) => {
+                const { _id: id, img, prices, title } = item;
+                return (
+                  <tr className={styles.trTitle} key={id}>
+                    <td>
+                      <Image
+                        src={img}
+                        width={50}
+                        height={50}
+                        objectFit='cover'
+                        alt=''
+                      />
+                    </td>
+                    <td>{excerpts(id, 5)}</td>
+                    <td>{title}</td>
+                    <td>${prices[0]}</td>
+                    <td>
+                      <button
+                        className={styles.button}
+                        onClick={() => {
+                          setClose(false);
+                          setSelected(id);
+                        }}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        className={styles.button}
+                        onClick={() => handleDelete(id)}
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+        <div className={styles.item}>
+          <h1 className={styles.title}>Orders</h1>
+          <table className={styles.table}>
+            <thead>
+              <tr className={styles.trTitle}>
+                <th>Id</th>
+                <th>Customer</th>
+                <th>Total</th>
+                <th>Payment</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {orderList.map((item) => {
+                return (
+                  <tr className={styles.trTitle} key={item._id}>
+                    <td>{excerpts(item._id, 5)}</td>
+                    <td>{item.customer}</td>
+                    <td>${item.total}</td>
+                    <td>
+                      {item.method === 0 ? (
+                        <span>cash</span>
+                      ) : (
+                        <span>paid</span>
+                      )}
+                    </td>
+                    <td>{status[item.status]}</td>
+                    <td>
+                      <button
+                        onClick={() => handleStatus(item._id)}
+                        disabled={item.status === 2}
+                        className={styles.btnOrder}
+                      >
+                        Next stage
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+        {!close && <Edit setClose={setClose} selected={selected} />}
       </div>
-      <div className={styles.item}>
-        <h1 className={styles.title}>Orders</h1>
-        <table className={styles.table}>
-          <thead>
-            <tr className={styles.trTitle}>
-              <th>Id</th>
-              <th>Customer</th>
-              <th>Total</th>
-              <th>Payment</th>
-              <th>Status</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {orderList.map((item) => {
-              return (
-                <tr className={styles.trTitle} key={item._id}>
-                  <td>{excerpts(item._id, 5)}</td>
-                  <td>{item.customer}</td>
-                  <td>${item.total}</td>
-                  <td>
-                    {item.method === 0 ? <span>cash</span> : <span>paid</span>}
-                  </td>
-                  <td>{status[item.status]}</td>
-                  <td>
-                    <button
-                      onClick={() => handleStatus(item._id)}
-                      disabled={item.status === 2}
-                      className={styles.btnOrder}
-                    >
-                      Next stage
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-      {!close && <Edit setClose={setClose} selected={selected} />}
-    </div>
+    </>
   );
 };
 

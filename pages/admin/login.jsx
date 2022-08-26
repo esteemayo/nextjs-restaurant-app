@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 
+import Meta from '@/components/Meta';
 import styles from '@/styles/Login.module.css';
 import { loginUser } from '@/services/authService';
 
@@ -33,28 +34,31 @@ const Login = () => {
   }, []);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.wrapper}>
-        <h1>Admin Dashboard</h1>
-        <input
-          type='text'
-          placeholder='Username'
-          className={styles.input}
-          ref={usernameRef}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          type='password'
-          placeholder='Password'
-          className={styles.input}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button onClick={handleClick} className={styles.button}>
-          Sign in
-        </button>
-        {error && <span className={styles.error}>Wrong credentials!</span>}
+    <>
+      <Meta title='Admin Login' />
+      <div className={styles.container}>
+        <div className={styles.wrapper}>
+          <h1>Admin Dashboard</h1>
+          <input
+            type='text'
+            placeholder='Username'
+            className={styles.input}
+            ref={usernameRef}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <input
+            type='password'
+            placeholder='Password'
+            className={styles.input}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button onClick={handleClick} className={styles.button}>
+            Sign in
+          </button>
+          {error && <span className={styles.error}>Wrong credentials!</span>}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
