@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import { useState } from 'react';
 
 import Add from '@/components/Add';
@@ -13,11 +12,6 @@ export default function Home({ products, admin }) {
 
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Pizza Restaurant in Newyork</title>
-        <meta name='description' content='Best pizza shop in town' />
-        <link rel='icon' href='/favicon.ico' />
-      </Head>
       <Featured />
       {admin && <AddButton setClose={setClose} />}
       <PizzaList products={products} />
