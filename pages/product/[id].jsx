@@ -2,10 +2,10 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { addProduct } from '../../features/cart/cartSlice';
-import { getProduct } from '../../services/productService';
+import { addProduct } from '@/features/cart/cartSlice';
+import { getProduct } from '@/services/productService';
 
-import styles from '../../styles/Product.module.css';
+import styles from '@/styles/Product.module.css';
 
 const Product = ({ product }) => {
   const dispatch = useDispatch();

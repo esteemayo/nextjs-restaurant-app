@@ -1,9 +1,8 @@
 import axios from 'axios';
 import { useState } from 'react';
 
-import { createProduct } from '../services/productService';
-
-import styles from '../styles/Add.module.css';
+import styles from '@/styles/Add.module.css';
+import { createProduct } from '@/services/productService';
 
 const Add = ({ setClose }) => {
   const [file, setFile] = useState(null);

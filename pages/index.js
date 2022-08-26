@@ -1,13 +1,12 @@
 import Head from 'next/head';
 import { useState } from 'react';
 
-import Add from '../components/Add';
-import Featured from '../components/Featured';
-import AddButton from '../components/AddButton';
-import PizzaList from '../components/PizzaList';
-import { getProducts } from '../services/productService';
-
-import styles from '../styles/Home.module.css';
+import Add from '@/components/Add';
+import Featured from '@/components/Featured';
+import styles from '@/styles/Home.module.css';
+import AddButton from '@/components/AddButton';
+import PizzaList from '@/components/PizzaList';
+import { getProducts } from '@/services/productService';
 
 export default function Home({ products, admin }) {
   const [close, setClose] = useState(true);

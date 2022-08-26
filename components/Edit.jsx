@@ -2,9 +2,8 @@ import axios from 'axios';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-import { getProduct, updateProduct } from '../services/productService';
-
-import styles from '../styles/Add.module.css';
+import styles from '@/styles/Add.module.css';
+import { getProduct, updateProduct } from '@/services/productService';
 
 const Edit = ({ setClose, selected }) => {
   const [id, setId] = useState(null);

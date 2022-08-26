@@ -1,12 +1,11 @@
 import Image from 'next/image';
 import { useState } from 'react';
 
-import excerpts from '../../utils';
-import Edit from '../../components/Edit';
-import { getOrders, updateOrder } from '../../services/orderService';
-import { deleteProduct, getProducts } from '../../services/productService';
-
-import styles from '../../styles/Admin.module.css';
+import excerpts from '@/utils/index';
+import Edit from '@/components/Edit';
+import styles from '@/styles/Admin.module.css';
+import { getOrders, updateOrder } from '@/services/orderService';
+import { deleteProduct, getProducts } from '@/services/productService';
 
 const Admin = ({ orders, products }) => {
   const [close, setClose] = useState(true);

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
-import styles from '../../styles/Order.module.css';
-import { getOrder } from '../../services/orderService';
+import styles from '@/styles/Order.module.css';
+import { getOrder } from '@/services/orderService';
 
 const Order = ({ order }) => {
   const status = order.status;

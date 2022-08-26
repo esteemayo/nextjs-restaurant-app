@@ -1,5 +1,5 @@
 import PizzaCard from './PizzaCard';
-import styles from '../styles/PizzaList.module.css';
+import styles from '@/styles/PizzaList.module.css';
 
 const PizzaList = ({ products }) => {
   return (

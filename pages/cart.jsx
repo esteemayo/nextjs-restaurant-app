@@ -8,11 +8,10 @@ import {
   usePayPalScriptReducer,
 } from '@paypal/react-paypal-js';
 
-import { reset } from '../features/cart/cartSlice';
-import OrderDetail from '../components/OrderDetail';
-import { createNewOrder } from '../services/orderService';
-
-import styles from '../styles/Cart.module.css';
+import styles from '@/styles/Cart.module.css';
+import { reset } from '@/features/cart/cartSlice';
+import OrderDetail from '@/components/OrderDetail';
+import { createNewOrder } from '@/services/orderService';
 
 const Cart = () => {
   const router = useRouter();

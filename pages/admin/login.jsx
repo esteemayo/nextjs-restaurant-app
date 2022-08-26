@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 
-import styles from '../../styles/Login.module.css';
-import { loginUser } from '../../services/authService';
+import styles from '@/styles/Login.module.css';
+import { loginUser } from '@/services/authService';
 
 const Login = () => {
   const router = useRouter();
