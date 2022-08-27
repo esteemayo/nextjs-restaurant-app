@@ -29,7 +29,6 @@ const Cart = () => {
   const createOrder = async (dataObj) => {
     try {
       const { data, status } = await createNewOrder(dataObj);
-      console.log(data);
 
       if (status === 201) {
         dispatch(reset());
