@@ -29,6 +29,7 @@ export const getServerSideProps = async (ctx) => {
   }
 
   const { data: products } = await getProducts();
+
   return {
     props: {
       products,

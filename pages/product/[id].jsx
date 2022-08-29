@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import Meta from '@/components/Meta';
+import excerpts from '@/utils/index';
 import styles from '@/styles/Product.module.css';
 import { addProduct } from '@/features/cart/cartSlice';
 import { getProduct } from '@/services/productService';
@@ -43,7 +44,7 @@ const Product = ({ product }) => {
 
   return (
     <>
-      <Meta title={product.title} />
+      <Meta title={product.title} description={excerpts(product.desc, 30)} />
       <div className={styles.container}>
         <div className={styles.left}>
           <div className={styles.imgContainer}>
@@ -105,6 +106,7 @@ const Product = ({ product }) => {
 
 export const getServerSideProps = async ({ params }) => {
   const { data: product } = await getProduct(params.id);
+
   return {
     props: {
       product,

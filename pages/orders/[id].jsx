@@ -129,6 +129,7 @@ const Order = ({ order }) => {
 
 export const getServerSideProps = async ({ params }) => {
   const { data: order } = await getOrder(params.id);
+
   return {
     props: {
       order,
