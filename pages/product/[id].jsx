@@ -44,7 +44,7 @@ const Product = ({ product }) => {
 
   return (
     <>
-      <Meta title={product.title} description={excerpts(product.desc, 30)} />
+      <Meta title={product.title} description={excerpts(product.desc, 100)} />
       <div className={styles.container}>
         <div className={styles.left}>
           <div className={styles.imgContainer}>
