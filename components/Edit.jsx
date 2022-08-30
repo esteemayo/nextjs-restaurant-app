@@ -124,7 +124,7 @@ const Edit = ({ setClose, isSelected }) => {
           <input
             type='text'
             id='title'
-            value={title}
+            value={title || ''}
             onChange={(e) => setTitle(e.target.value)}
             className={styles.input}
           />
@@ -135,7 +135,7 @@ const Edit = ({ setClose, isSelected }) => {
           </label>
           <textarea
             id='desc'
-            value={desc}
+            value={desc || ''}
             rows={4}
             className={styles.textarea}
             onChange={(e) => setDesc(e.target.value)}
