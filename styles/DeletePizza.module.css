@@ -1,0 +1,67 @@
+.header {
+  width: 100%;
+  padding: 2rem;
+  border-bottom: 1px solid lightgray;
+  background-color: #f9f9f9;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.body {
+  padding: 3.5rem 2rem;
+}
+
+.body p {
+  font-size: 1.8rem;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+.footer {
+  padding: 1.5rem 2rem;
+  border-top: 1px solid lightgray;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.btn {
+  border: none;
+  outline: none;
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-weight: 700;
+  font-size: 1.5rem;
+  border-radius: 0.5rem;
+  color: var(--color-white);
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.btn:last-of-type {
+  margin-left: 1rem;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.btnCancel {
+  background-color: #bcee59;
+}
+
+.btnDelete {
+  background-color: #f00;
+}
+
+.btnCancel:hover {
+  background-color: #9edd21;
+}
+
+.btnDelete:hover {
+  background-color: rgba(209, 5, 5, 0.76);
+}

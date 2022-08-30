@@ -4,26 +4,29 @@ import { useState } from 'react';
 import excerpts from '@/utils/index';
 import Edit from '@/components/Edit';
 import Meta from '@/components/Meta';
+import Modal from '@/components/Modal';
 import styles from '@/styles/Admin.module.css';
+import DeletePizza from '@/components/DeletePizza';
 import { getOrders, updateOrder } from '@/services/orderService';
 import { deleteProduct, getProducts } from '@/services/productService';
 
 const Admin = ({ orders, products }) => {
+  const [title, setTitle] = useState(null);
   const [close, setClose] = useState(true);
-  const [selected, setSelected] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+  const [isSelected, setIsSelected] = useState(null);
   const [orderList, setOrderList] = useState(orders);
   const [productList, setProductList] = useState(products);
 
   const status = ['preparing', 'on the way', 'delivered'];
 
   const handleDelete = async (id) => {
-    if (window.confirm('Are you sure?')) {
-      try {
-        await deleteProduct(id);
-        setProductList(products.filter((item) => item._id !== id));
-      } catch (err) {
-        console.log(err);
-      }
+    try {
+      await deleteProduct(id);
+      setProductList(products.filter((item) => item._id !== id));
+      setShowModal(false);
+    } catch (err) {
+      console.log(err);
     }
   };
 
@@ -81,14 +84,18 @@ const Admin = ({ orders, products }) => {
                         className={styles.button}
                         onClick={() => {
                           setClose(false);
-                          setSelected(id);
+                          setIsSelected(id);
                         }}
                       >
                         Edit
                       </button>
                       <button
                         className={styles.button}
-                        onClick={() => handleDelete(id)}
+                        onClick={() => {
+                          setShowModal(true);
+                          setIsSelected(id);
+                          setTitle(title);
+                        }}
                       >
                         Delete
                       </button>
@@ -142,7 +149,17 @@ const Admin = ({ orders, products }) => {
             </tbody>
           </table>
         </div>
-        {!close && <Edit setClose={setClose} selected={selected} />}
+        {!close && <Edit setClose={setClose} isSelected={isSelected} />}
+        {showModal && (
+          <Modal onClose={setShowModal}>
+            <DeletePizza
+              title={title}
+              onClose={setShowModal}
+              isSelected={isSelected}
+              onDelete={handleDelete}
+            />
+          </Modal>
+        )}
       </div>
     </>
   );
