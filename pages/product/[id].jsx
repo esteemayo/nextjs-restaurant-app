@@ -6,7 +6,7 @@ import Meta from '@/components/Meta';
 import excerpts from '@/utils/index';
 import styles from '@/styles/Product.module.css';
 import { addProduct } from '@/features/cart/cartSlice';
-import { getProduct } from '@/services/productService';
+import { getProduct, getProducts } from '@/services/productService';
 
 const Product = ({ product }) => {
   const dispatch = useDispatch();
@@ -104,13 +104,28 @@ const Product = ({ product }) => {
   );
 };
 
-export const getServerSideProps = async ({ params }) => {
-  const { data: product } = await getProduct(params.id);
+export const getStaticProps = async ({ params: { id } }) => {
+  const { data: product } = await getProduct(id);
 
   return {
     props: {
       product,
     },
+    revalidate: 1,
+  };
+};
+
+export const getStaticPaths = async () => {
+  const { data: products } = await getProducts();
+
+  const ids = products.map((product) => product._id);
+  const paths = ids.map((id) => ({
+    params: { id },
+  }));
+
+  return {
+    paths,
+    fallback: true,
   };
 };
 
