@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import styles from '@/styles/Add.module.css';
 import { getProduct, updateProduct } from '@/services/productService';
 
-const Edit = ({ setClose, selected }) => {
+const Edit = ({ setClose, isSelected }) => {
   const [id, setId] = useState(null);
   const [desc, setDesc] = useState(null);
   const [file, setFile] = useState(null);
@@ -70,7 +70,7 @@ const Edit = ({ setClose, selected }) => {
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await getProduct(selected);
+        const { data } = await getProduct(isSelected);
         setProduct(data);
         setId(data._id);
         setTitle(data.title);
@@ -81,7 +81,7 @@ const Edit = ({ setClose, selected }) => {
         console.log(err);
       }
     })();
-  }, [selected]);
+  }, [isSelected]);
 
   return (
     <div className={styles.container}>
