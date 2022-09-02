@@ -1,0 +1,30 @@
+.scroll {
+  position: fixed;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  animation: fadeIn 700ms ease-in-out 1s both;
+  cursor: pointer;
+  font-size: 40px;
+  margin-right: 2rem;
+  z-index: 3000;
+  transform-origin: bottom;
+  transition: all 0.5s ease-in-out;
+}
+
+.scroll:hover {
+  transform: scale(1.3);
+}
+
+.icon {
+  color: var(--color-primary);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
