@@ -10,6 +10,17 @@
   z-index: 1000;
 }
 
+.container.scrolled {
+  background-image: linear-gradient(
+    to right bottom,
+    rgb(253, 145, 117),
+    rgb(255, 126, 94),
+    rgb(245, 84, 43),
+    rgb(219, 63, 24),
+    rgb(168, 37, 4)
+  );
+}
+
 .item {
   flex: 1;
   display: flex;
