@@ -147,7 +147,7 @@ const Cart = () => {
                           })}
                         </span>
                       ) : (
-                        '_______'
+                        <span>&mdash;&mdash;&mdash;</span>
                       )}
                     </td>
                     <td>
