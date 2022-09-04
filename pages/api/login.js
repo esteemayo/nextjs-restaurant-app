@@ -21,6 +21,9 @@ const handler = (req, res) => {
     } else {
       res.status(400).json('Wrong credentials!');
     }
+  } else {
+    res.setHeader('Allow', ['POST']);
+    res.status(405).json({ message: `Method ${req.method} is not allowed` });
   }
 };
 

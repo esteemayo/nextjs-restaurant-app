@@ -1,5 +1,5 @@
-import Order from '../../../models/Order';
-import dbConnect from '../../../utils/mongo';
+import Order from '@/models/Order';
+import dbConnect from '@/utils/mongo';
 
 const handler = async (req, res) => {
   const { method } = req;
@@ -13,6 +13,9 @@ const handler = async (req, res) => {
     } catch (err) {
       res.status(500).json({ message: err });
     }
+  } else {
+    res.setHeader('Allow', ['GET']);
+    res.status(405).json({ message: `Method ${method} is not allowed` });
   }
 
   if (method === 'POST') {
@@ -22,6 +25,9 @@ const handler = async (req, res) => {
     } catch (err) {
       res.status(500).json({ message: err });
     }
+  } else {
+    res.setHeader('Allow', ['POST']);
+    res.status(405).json({ message: `Method ${method} is not allowed` });
   }
 };
 

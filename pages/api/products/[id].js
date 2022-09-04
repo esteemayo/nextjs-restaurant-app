@@ -1,5 +1,5 @@
-import dbConnect from '../../../utils/mongo';
-import Product from '../../../models/Product';
+import dbConnect from '@/utils/mongo';
+import Product from '@/models/Product';
 
 export default async function handler(req, res) {
   const {
@@ -26,6 +26,9 @@ export default async function handler(req, res) {
     } catch (err) {
       res.status(500).json({ message: err });
     }
+  } else {
+    res.setHeader('Allow', ['GET']);
+    res.status(405).json({ message: `Method ${method} is not allowed` });
   }
 
   if (method === 'PATCH') {
@@ -53,6 +56,9 @@ export default async function handler(req, res) {
     } catch (err) {
       res.status(500).json({ message: err });
     }
+  } else {
+    res.setHeader('Allow', ['PATCH']);
+    res.status(405).json({ message: `Method ${method} is not allowed` });
   }
 
   if (method === 'DELETE') {
@@ -75,5 +81,8 @@ export default async function handler(req, res) {
     } catch (err) {
       res.status(500).json({ message: err });
     }
+  } else {
+    res.setHeader('Allow', ['DELETE']);
+    res.status(405).json({ message: `Method ${method} is not allowed` });
   }
 }

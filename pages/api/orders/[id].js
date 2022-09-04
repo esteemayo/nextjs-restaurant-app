@@ -1,5 +1,5 @@
-import Order from '../../../models/Order';
-import dbConnect from '../../../utils/mongo';
+import Order from '@/models/Order';
+import dbConnect from '@/utils/mongo';
 
 const handler = async (req, res) => {
   const {
@@ -23,6 +23,9 @@ const handler = async (req, res) => {
     } catch (err) {
       res.status(500).json({ message: err });
     }
+  } else {
+    res.setHeader('Allow', ['GET']);
+    res.status(405).json({ message: `Method ${method} is not allowed` });
   }
 
   if (method === 'PATCH') {
@@ -46,6 +49,9 @@ const handler = async (req, res) => {
     } catch (err) {
       res.status(500).json({ message: err });
     }
+  } else {
+    res.setHeader('Allow', ['PATCH']);
+    res.status(405).json({ message: `Method ${method} is not allowed` });
   }
 
   if (method === 'DELETE') {
@@ -64,6 +70,9 @@ const handler = async (req, res) => {
     } catch (err) {
       res.status(500).json({ message: err });
     }
+  } else {
+    res.setHeader('Allow', ['DELETE']);
+    res.status(405).json({ message: `Method ${method} is not allowed` });
   }
 };
 
