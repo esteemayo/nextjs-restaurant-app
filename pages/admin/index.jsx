@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import { useState } from 'react';
 
-import excerpts from '@/utils/index';
 import Edit from '@/components/Edit';
 import Meta from '@/components/Meta';
 import Modal from '@/components/Modal';
+import { excerpts } from '@/utils/index';
 import styles from '@/styles/Admin.module.css';
 import DeletePizza from '@/components/DeletePizza';
 import { getOrders, updateOrder } from '@/services/orderService';
