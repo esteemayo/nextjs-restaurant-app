@@ -6,7 +6,8 @@
       "@/services/*": ["services/*"],
       "@/styles/*": ["styles/*"],
       "@/utils/*": ["utils/*"],
-      "@/features/*": ["features/*"]
+      "@/features/*": ["features/*"],
+      "@/models/*": ["models/*"]
     }
   }
 }
