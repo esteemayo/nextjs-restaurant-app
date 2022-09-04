@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 
 import Meta from '@/components/Meta';
+import { parseCookie } from '@/utils/index';
 import styles from '@/styles/Login.module.css';
 import { loginUser } from '@/services/authService';
 
@@ -60,6 +61,23 @@ const Login = () => {
       </div>
     </>
   );
+};
+
+export const getServerSideProps = ({ req }) => {
+  const { token } = parseCookie(req);
+
+  if (token || token === process.env.NEXT_PUBLIC_TOKEN) {
+    return {
+      redirect: {
+        destination: '/admin',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
 };
 
 export default Login;
