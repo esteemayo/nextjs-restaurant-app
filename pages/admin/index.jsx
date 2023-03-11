@@ -2,7 +2,6 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 import Edit from '@/components/Edit';
-import Meta from '@/components/Meta';
 import Modal from '@/components/Modal';
 import Meta from '@/components/Meta';
 import { excerpts } from '@/utils/index';
