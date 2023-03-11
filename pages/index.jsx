@@ -6,6 +6,7 @@ import styles from '@/styles/Home.module.css';
 import AddButton from '@/components/AddButton';
 import PizzaList from '@/components/PizzaList';
 import { getProducts } from '@/services/productService';
+import styles from '@/styles/Home.module.css';
 
 export default function Home({ products, admin }) {
   const [close, setClose] = useState(true);
