@@ -2,6 +2,7 @@ import { Provider } from 'react-redux';
 
 import store from 'app/store';
 import Layout from '@/components/Layout';
+import store from 'app/store';
 import BackToTop from '@/components/BackToTop';
 
 import '@/styles/globals.css';
