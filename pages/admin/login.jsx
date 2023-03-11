@@ -5,6 +5,7 @@ import Meta from '@/components/Meta';
 import { parseCookie } from '@/utils/index';
 import Meta from '@/components/Meta';
 import { loginUser } from '@/services/authService';
+import styles from '@/styles/Login.module.css';
 
 const Login = () => {
   const router = useRouter();
