@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
 
 import styles from '@/styles/Navbar.module.css';
 
