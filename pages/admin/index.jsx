@@ -10,6 +10,7 @@ import styles from '@/styles/Admin.module.css';
 import DeletePizza from '@/components/DeletePizza';
 import { getOrders, updateOrder } from '@/services/orderService';
 import { deleteProduct, getProducts } from '@/services/productService';
+import { getOrders, updateOrder } from '@/services/orderService';
 
 const Admin = ({ orders, products }) => {
   const [title, setTitle] = useState(null);
