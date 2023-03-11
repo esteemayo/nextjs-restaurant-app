@@ -1,6 +1,5 @@
 import { ToastContainer } from 'react-toastify';
 
-import Meta from './Meta';
 import Footer from './Footer';
 import Navbar from './Navbar';
 
