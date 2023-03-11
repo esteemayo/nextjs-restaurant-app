@@ -1,6 +1,5 @@
 import { useState } from 'react';
 
-import Add from '@/components/Add';
 import Featured from '@/components/Featured';
 import Add from '@/components/Add';
 import AddButton from '@/components/AddButton';
