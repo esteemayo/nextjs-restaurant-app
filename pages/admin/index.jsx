@@ -8,7 +8,7 @@ import Meta from '@/components/Meta';
 import { excerpts } from '@/utils/index';
 import styles from '@/styles/Admin.module.css';
 import DeletePizza from '@/components/DeletePizza';
-import { getOrders, updateOrder } from '@/services/orderService';
+import styles from '@/styles/Admin.module.css';
 import { deleteProduct, getProducts } from '@/services/productService';
 import { getOrders, updateOrder } from '@/services/orderService';
 
