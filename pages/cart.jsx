@@ -10,8 +10,6 @@ import {
 
 import { reset } from '@/features/cart/cartSlice';
 import Meta from '@/components/Meta';
-import styles from '@/styles/Cart.module.css';
-import { reset } from '@/features/cart/cartSlice';
 import OrderDetail from '@/components/OrderDetail';
 import styles from '@/styles/Cart.module.css';
 import { createNewOrder } from '@/services/orderService';
