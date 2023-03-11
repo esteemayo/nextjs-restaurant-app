@@ -8,6 +8,7 @@ import {
   usePayPalScriptReducer,
 } from '@paypal/react-paypal-js';
 
+import { reset } from '@/features/cart/cartSlice';
 import Meta from '@/components/Meta';
 import styles from '@/styles/Cart.module.css';
 import { reset } from '@/features/cart/cartSlice';
