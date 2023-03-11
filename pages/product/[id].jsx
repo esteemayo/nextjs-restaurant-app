@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { useState } from 'react';
+import Image from 'next/image';
 import { useDispatch } from 'react-redux';
 
 import Meta from '@/components/Meta';
