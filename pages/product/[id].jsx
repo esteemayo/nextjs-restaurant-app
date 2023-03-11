@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import Meta from '@/components/Meta';
 import { excerpts } from '@/utils/index';
-import styles from '@/styles/Product.module.css';
+import Meta from '@/components/Meta';
 import { addProduct } from '@/features/cart/cartSlice';
 import { getProduct, getProducts } from '@/services/productService';
 
