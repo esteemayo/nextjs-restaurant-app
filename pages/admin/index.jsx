@@ -5,7 +5,6 @@ import Edit from '@/components/Edit';
 import Modal from '@/components/Modal';
 import Meta from '@/components/Meta';
 import { excerpts } from '@/utils/index';
-import styles from '@/styles/Admin.module.css';
 import DeletePizza from '@/components/DeletePizza';
 import styles from '@/styles/Admin.module.css';
 import { deleteProduct, getProducts } from '@/services/productService';
