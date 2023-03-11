@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Meta from '@/components/Meta';
 import styles from '@/styles/Order.module.css';
 import { getOrder } from '@/services/orderService';
+import styles from '@/styles/Order.module.css';
 
 const Order = ({ order }) => {
   const status = order.status;
