@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import Meta from '@/components/Meta';
 import { parseCookie } from '@/utils/index';
-import styles from '@/styles/Login.module.css';
+import Meta from '@/components/Meta';
 import { loginUser } from '@/services/authService';
 
 const Login = () => {
