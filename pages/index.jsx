@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import Add from '@/components/Add';
 import Featured from '@/components/Featured';
-import styles from '@/styles/Home.module.css';
+import Add from '@/components/Add';
 import AddButton from '@/components/AddButton';
 import PizzaList from '@/components/PizzaList';
 import { getProducts } from '@/services/productService';
