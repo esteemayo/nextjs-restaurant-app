@@ -1,7 +1,6 @@
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 
-import Meta from '@/components/Meta';
 import { parseCookie } from '@/utils/index';
 import Meta from '@/components/Meta';
 import { loginUser } from '@/services/authService';
