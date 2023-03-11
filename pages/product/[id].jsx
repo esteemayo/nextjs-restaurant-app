@@ -6,6 +6,7 @@ import Meta from '@/components/Meta';
 import { excerpts } from '@/utils/index';
 import Meta from '@/components/Meta';
 import { addProduct } from '@/features/cart/cartSlice';
+import styles from '@/styles/Product.module.css';
 import { getProduct, getProducts } from '@/services/productService';
 
 const Product = ({ product }) => {
